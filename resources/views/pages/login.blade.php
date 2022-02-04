@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('/css/app.css')}}">
-    <title>Home page</title>
+    <title>Accedi</title>
 </head>
 <body>
     <div class="container text-center">
-        <h1>Ciao</h1>
-        <h3>Per vedere i post pubblicati, accedi o registrati.</h3>
-        <a href="{{route('login')}}" class="btn btn-primary">Accedi</a>
-        <a href="{{route('register')}}" class="btn btn-primary">Registrati</a>
+        <h3>Accedi</h3>
+        <form action="" method="post">
+            
+        </form>
+        
     </div>
 
     <script src="{{asset('/js/app.js')}}"></script>

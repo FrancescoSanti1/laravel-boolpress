@@ -21,4 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'GuestController@index')->name('index');
+Route::get('/', 'GuestController@index') -> name('index');
+
+Route::get('/register', 'Guestcontroller@register') -> name('register');
+Route::get('/login', 'Guestcontroller@login') -> name('login');
