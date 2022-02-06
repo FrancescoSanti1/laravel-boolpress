@@ -17,4 +17,8 @@ class GuestController extends Controller
     public function login() {
         return view('pages.login');
     }
+
+    public function showPosts() {
+        return view('pages.posts');
+    }
 }

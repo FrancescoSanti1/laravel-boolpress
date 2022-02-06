@@ -10,8 +10,13 @@
 <body>
     <div class="container text-center">
         <h3>Accedi</h3>
-        <form action="" method="post">
-            
+        <form action="{{route('login')}}" method="post">
+            @method('post')
+            @csrf
+
+            <input type="email" name="email" class="mb-2" placeholder="Inserisci la tua email"><br>
+            <input type="password" name="password" class="mb-2" placeholder="Inserisci la password"><br>
+            <input type="submit" class="btn btn-primary" value="Accedi">
         </form>
         
     </div>
