@@ -35,4 +35,9 @@ class GuestController extends Controller
         $post = Post::create($data);
         return redirect() -> route('posts');
     }
+
+    public function showAllPosts() {
+        $posts = Post::all();
+        return json_encode($posts);
+    }
 }

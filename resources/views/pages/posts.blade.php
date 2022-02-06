@@ -27,15 +27,22 @@
             <form action="{{route('newPost')}}" method="post">
                 @method('post')
                 @csrf
+                <label for="author">Autore:</label>
                 <input type="text" name="author" value="{{Auth::user()->name}}" class="mb-2"><br>
+                <label for="title">Titolo:</label>
                 <input type="text" name="title" placeholder="Titolo del post" class="mb-2"><br>
+                <label for="subtitle">Sottotitolo:</label>
                 <input type="text" name="subtitle" placeholder="Sottotitolo del post" class="mb-2"><br>
+                <label for="publication_date">Data di pubblicazione:</label>
                 <input type="date" name="publication_date" class="mb-2"><br>
                 <textarea name="post_content" cols="30" rows="5" placeholder="Scrivi qui il tuo post" class="mb-2"></textarea><br>
                 <input type="submit" value="Pubblica">
             </form>
 
             <h3 class="mt-3">Tutti i post pubblicati</h3>
+            <div id="app">
+                <show-all-posts></show-all-posts>
+            </div>
         @else
             <h3>Per vedere i post pubblicati, accedi o registrati.</h3>
             <a href="{{route('loginForm')}}" class="btn btn-primary">Accedi</a>
