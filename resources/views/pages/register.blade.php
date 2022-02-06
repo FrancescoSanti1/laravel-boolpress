@@ -8,7 +8,7 @@
     <title>Registrati</title>
 </head>
 <body>
-    <div class="container text-center">
+    <div class="container text-center pt-3">
         <h3>Registrati</h3>
         <form action="{{route('register')}}" method="post">
             @method('post')

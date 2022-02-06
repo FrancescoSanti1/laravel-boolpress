@@ -8,7 +8,7 @@
     <title>Accedi</title>
 </head>
 <body>
-    <div class="container text-center">
+    <div class="container text-center pt-3">
         <h3>Accedi</h3>
         <form action="{{route('login')}}" method="post">
             @method('post')

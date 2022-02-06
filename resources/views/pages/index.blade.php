@@ -8,7 +8,7 @@
     <title>Home page</title>
 </head>
 <body>
-    <div class="container text-center">
+    <div class="container text-center pt-3">
         <h1>Ciao</h1>
         <h3>Per vedere i post pubblicati, accedi o registrati.</h3>
         <a href="{{route('loginForm')}}" class="btn btn-primary">Accedi</a>
