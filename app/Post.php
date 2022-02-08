@@ -12,5 +12,10 @@ class Post extends Model
         'subtitle',
         'publication_date',
         'post_content',
+        'category_id'
     ];
+
+    public function category() {
+        return $this->belongsTo('App\Category');
+    }
 }

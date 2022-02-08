@@ -36,13 +36,23 @@
                 <label for="publication_date">Data di pubblicazione:</label>
                 <input type="date" name="publication_date" class="mb-2"><br>
                 <textarea name="post_content" cols="30" rows="5" placeholder="Scrivi qui il tuo post" class="mb-2"></textarea><br>
+                <select name="category_id">
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
                 <input type="submit" value="Pubblica">
             </form>
 
             <h3 class="mt-3">Tutti i post pubblicati</h3>
-            <div id="app">
+            @foreach ($posts as $post)
+                <h5>{{$post->title}}</h5>
+                <h6>{{$post->subtitle}}</h6>
+                <h6>{{$post->author}} - categoria: {{$post->category->name}}</h6>
+            @endforeach
+            {{-- <div id="app">
                 <show-all-posts></show-all-posts>
-            </div>
+            </div> --}}
         @else
             <h3>Per vedere i post pubblicati, accedi o registrati.</h3>
             <a href="{{route('loginForm')}}" class="btn btn-primary">Accedi</a>

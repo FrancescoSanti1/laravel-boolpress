@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class GuestController extends Controller
 {
@@ -20,16 +21,20 @@ class GuestController extends Controller
     }
 
     public function showPosts() {
-        return view('pages.posts');
+        $categories = Category::all();
+        $posts = Post::all();
+        return view('pages.posts', compact('categories', 'posts'));
     }
 
     public function newPost(Request $request) {
+
         $data = $request->validate([
             'author' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'subtitle' => 'required|string|max:255',
             'publication_date' => 'required|date',
-            'post_content' => 'required'
+            'post_content' => 'required',
+            'category_id' => 'nullable'
         ]);
 
         $post = Post::create($data);
