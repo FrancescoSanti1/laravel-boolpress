@@ -36,7 +36,9 @@
                 <label for="publication_date">Data di pubblicazione:</label>
                 <input type="date" name="publication_date" class="mb-2"><br>
                 <textarea name="post_content" cols="30" rows="5" placeholder="Scrivi qui il tuo post" class="mb-2"></textarea><br>
+                <label for="category_id">Categoria: </label>
                 <select name="category_id">
+                    <option value="">Nessuna</option>
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
@@ -48,7 +50,11 @@
             @foreach ($posts as $post)
                 <h5>{{$post->title}}</h5>
                 <h6>{{$post->subtitle}}</h6>
-                <h6>{{$post->author}} - categoria: {{$post->category->name}}</h6>
+                <h6>{{$post->author}} 
+                    @if($post->category)
+                        - categoria: {{$post->category->name}}
+                    @endif
+                </h6>
             @endforeach
             {{-- <div id="app">
                 <show-all-posts></show-all-posts>
