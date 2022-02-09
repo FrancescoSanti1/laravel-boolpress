@@ -29,11 +29,51 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function editPost($id) {
+        $post = Post::findOrFail($id);
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('pages.editPost', compact('post', 'categories', 'tags'));
+    }
+
+    public function updatePost(Request $request, $id) {
+        $data = $request->validate([
+            'author' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+            'subtitle' => 'required|string|max:255',
+            'publication_date' => 'required|date',
+            'post_content' => 'required',
+            'category_id' => 'nullable',
+            'tags' => 'nullable',
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->update($data);
+
+        if($request->get('category_id')) {
+
+            $category = Category::findOrFail($request->get('category_id'));
+            $post->category()->associate($category);
+            $post->save();
+        }
+
+        if($request->get('tags')) {
+
+            $tags = Tag::findOrFail($request->get('tags'));
+        } else {
+            $tags = [];
+        }
+        $post->tags()->sync($tags);
+        $post->save();
+
+        return redirect() -> route('posts');
+    }
+
     public function deletePost($id) {
         $post = Post::findOrFail($id);
         $post->tags()->sync([]);
         $post->delete();
-        
+
         return redirect()->route('posts');
     }
 }

@@ -34,7 +34,9 @@ Route::get('/logout', 'Auth\LoginController@logout') -> name('logout');
 Route::get('/posts', 'Guestcontroller@showPosts') -> name('posts');
 
 Route::post('/newPost', 'GuestController@newPost') -> name('newPost');
-Route::post('/editPost', 'HomeController@editPost') -> name('editPost');
+Route::get('/editPost/{id}', 'HomeController@editPost') -> name('editPost');
+Route::post('/updatePost/{id}', 'HomeController@updatePost') -> name('updatePost');
+
 Route::get('/deletePost/{id}', 'HomeController@deletePost') -> name('deletePost');
 
 Route::get('/showAllPosts', 'GuestController@showAllPosts') -> name('showAllPosts');
