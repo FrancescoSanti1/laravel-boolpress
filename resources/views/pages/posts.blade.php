@@ -42,7 +42,12 @@
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
-                </select>
+                </select><br>
+                @foreach ($tags as $tag)
+                    <input type="checkbox" name="tags[]" value="{{$tag->id}}">
+                    <label for="tags" class="mr-3">{{$tag->name}}</label>
+                @endforeach
+                <br>
                 <input type="submit" value="Pubblica">
             </form>
 
@@ -54,6 +59,12 @@
                     @if($post->category)
                         - categoria: {{$post->category->name}}
                     @endif
+                </h6>
+
+                <h6>
+                    @foreach ($post -> tags as $tag)
+                        {{$tag->name}}<br>
+                    @endforeach
                 </h6>
             @endforeach
             {{-- <div id="app">
