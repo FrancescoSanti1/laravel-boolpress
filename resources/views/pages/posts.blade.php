@@ -66,6 +66,9 @@
                         {{$tag->name}}<br>
                     @endforeach
                 </h6>
+                <a class="btn btn-info" href="#">Modifica post</a>
+                <a class="btn btn-danger" href="{{route('deletePost', $post->id)}}">Elimina post</a>
+                <br><hr><br>
             @endforeach
             {{-- <div id="app">
                 <show-all-posts></show-all-posts>
