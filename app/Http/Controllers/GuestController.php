@@ -28,6 +28,10 @@ class GuestController extends Controller
         return view('pages.posts', compact('categories', 'posts', 'tags'));
     }
 
+    public function vuePosts() {
+        return view('pages.vuePosts');
+    }
+
     public function showAllPosts() {
         $posts = Post::all();
         return json_encode($posts);

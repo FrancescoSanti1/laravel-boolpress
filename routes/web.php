@@ -41,4 +41,5 @@ Route::post('/updatePost/{id}', 'HomeController@updatePost') -> name('updatePost
 
 Route::get('/deletePost/{id}', 'HomeController@deletePost') -> name('deletePost');
 
-Route::get('/showAllPosts', 'GuestController@showAllPosts') -> name('showAllPosts');
+Route::get('/vue/posts', 'GuestController@vuePosts') -> name('vue.posts');
+Route::get('/showAllPosts', 'GuestController@showAllPosts') -> name('vue.showAllPosts');
