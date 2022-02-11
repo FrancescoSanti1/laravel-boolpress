@@ -27,8 +27,6 @@
             <form action="{{route('updatePost', $post->id)}}" method="post">
                 @method('post')
                 @csrf
-                <label for="author">Autore:</label>
-                <input type="text" name="author" value="{{Auth::user()->name}}" class="mb-2"><br>
                 <label for="title">Titolo:</label>
                 <input type="text" name="title" value="{{$post->title}}" placeholder="Titolo del post" class="mb-2"><br>
                 <label for="subtitle">Sottotitolo:</label>

@@ -1965,21 +1965,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      categories: [],
       posts: []
     };
   },
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('showAllPosts').then(function (result) {
+    axios.get('/vue/showAllPosts').then(function (result) {
       console.log(result.data);
-      _this.posts = result.data;
+      _this.categories = result.data.categories;
+      _this.posts = result.data.posts;
     })["catch"](function (error) {
       console.log(error);
     });
+  },
+  methods: {
+    postCategory: function postCategory(id) {
+      console.log(id);
+      this.categories.forEach(function (category) {
+        if (category.id === id) {
+          console.log(category.name);
+          return category.name;
+        }
+      });
+    }
   }
 });
 
@@ -37656,8 +37673,17 @@ var render = function () {
               _vm._v(
                 "\n                    " +
                   _vm._s(post.post_content) +
-                  "\n                "
+                  "\n                    \n                    "
               ),
+              post.category_id
+                ? _c("div", [
+                    _vm._v(
+                      "\n                        Categoria: " +
+                        _vm._s(_vm.postCategory(post.category_id)) +
+                        "\n                    "
+                    ),
+                  ])
+                : _vm._e(),
             ]),
           ])
         }),

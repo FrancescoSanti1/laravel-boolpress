@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Post;
 use App\Category;
 use App\Tag;
@@ -39,7 +41,6 @@ class HomeController extends Controller
     public function addPost(Request $request) {
 
         $data = $request->validate([
-            'author' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'subtitle' => 'required|string|max:255',
             'publication_date' => 'required|date',
@@ -47,6 +48,8 @@ class HomeController extends Controller
             'category_id' => 'nullable',
             'tags' => 'nullable',
         ]);
+
+        $data['author'] = Auth::user()->name;
 
         $post = Post::make($data);
         if($request->get('category_id')) {
@@ -75,7 +78,6 @@ class HomeController extends Controller
 
     public function updatePost(Request $request, $id) {
         $data = $request->validate([
-            'author' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'subtitle' => 'required|string|max:255',
             'publication_date' => 'required|date',

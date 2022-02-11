@@ -33,7 +33,13 @@ class GuestController extends Controller
     }
 
     public function showAllPosts() {
+        $categories = Category::all();
         $posts = Post::all();
-        return json_encode($posts);
+        
+        $data = [
+            'categories' => $categories,
+            'posts' => $posts
+        ];
+        return json_encode($data);
     }
 }

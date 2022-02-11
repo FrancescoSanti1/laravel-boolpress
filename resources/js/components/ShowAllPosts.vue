@@ -15,6 +15,10 @@
                         Pubblicato il {{post.publication_date}}
                         <br><br>
                         {{post.post_content}}
+                        
+                        <div v-if="post.category_id">
+                            Categoria: {{ postCategory(post.category_id) }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -26,19 +30,33 @@
     export default {
         data() {
             return {
+                categories: [],
                 posts: []
             }
         },
         mounted() {
             axios
-            .get('showAllPosts')
+            .get('/vue/showAllPosts')
             .then(result => {
                 console.log(result.data);
-                this.posts = result.data;
+
+                this.categories = result.data.categories;
+                this.posts = result.data.posts;
             })
             .catch(error => {
                 console.log(error);
             });
+        },
+        methods: {
+            postCategory(id) {
+                console.log(id);
+                this.categories.forEach(category => {
+                    if(category.id === id) {
+                        console.log(category.name);
+                        return category.name;
+                    }
+                });
+            }
         }
     }
 </script>
