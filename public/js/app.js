@@ -1974,7 +1974,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('/showAllPosts').then(function (result) {
+    axios.get('showAllPosts').then(function (result) {
       console.log(result.data);
       _this.posts = result.data;
     })["catch"](function (error) {

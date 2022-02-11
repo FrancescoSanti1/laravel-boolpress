@@ -31,7 +31,7 @@
         },
         mounted() {
             axios
-            .get('/showAllPosts')
+            .get('showAllPosts')
             .then(result => {
                 console.log(result.data);
                 this.posts = result.data;
