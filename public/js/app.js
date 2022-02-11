@@ -1980,7 +1980,6 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('/vue/showAllPosts').then(function (result) {
-      console.log(result.data);
       _this.categories = result.data.categories;
       _this.posts = result.data.posts;
     })["catch"](function (error) {
@@ -1989,13 +1988,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     postCategory: function postCategory(id) {
-      console.log(id);
+      var toReturn = null;
       this.categories.forEach(function (category) {
         if (category.id === id) {
-          console.log(category.name);
-          return category.name;
+          toReturn = category.name;
         }
       });
+      return toReturn;
     }
   }
 });

@@ -38,7 +38,6 @@
             axios
             .get('/vue/showAllPosts')
             .then(result => {
-                console.log(result.data);
 
                 this.categories = result.data.categories;
                 this.posts = result.data.posts;
@@ -49,13 +48,14 @@
         },
         methods: {
             postCategory(id) {
-                console.log(id);
+
+                let toReturn = null;
                 this.categories.forEach(category => {
                     if(category.id === id) {
-                        console.log(category.name);
-                        return category.name;
+                        toReturn = category.name;
                     }
                 });
+                return toReturn;
             }
         }
     }
